@@ -39,16 +39,16 @@
 template<class ArgsType>
 constexpr auto power_mod(const ArgsType args) {
     constexpr auto bv = std::get<0>(args());
-    static_assert(bv > 0);
-    static_assert(bv < 1000000000);
+    static_assert(bv > 0, "Base should be greater than zero");
+    static_assert(bv < 1000000000, "Base should be less than 1 000 000 000");
 	
     constexpr auto pv = std::get<1>(args());
-    static_assert(pv > 0);
-    static_assert(pv < 1000000);
+    static_assert(pv > 0, "Power should be greater than zero");
+    static_assert(pv < 1000000, "Power should be less than 1 000 000");
 	
     constexpr auto mv = std::get<2>(args());
-    static_assert(mv > 0);
-    static_assert(mv < 1000000000);
+    static_assert(mv > 0, "Modulus should be greater than zero");
+    static_assert(mv < 1000000000, "Modulus should be less than 1 000 000 000");
 	
     u_int64_t res = 1u;
     u_int64_t tmp = bv % mv;
